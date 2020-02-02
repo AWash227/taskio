@@ -14,7 +14,7 @@ export const ShrinkBar = ({ shrinkbaritems }) => {
     >
       <ShrinkBarItem
         shrinkbaritem={{
-          title: "Fuckit Planner",
+          title: "Taskio",
           icon: <IoIosTrendingUp size={25} />,
           link: "/"
         }}
