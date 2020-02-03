@@ -32,6 +32,30 @@ h4 {
     display: flex;
   }
 }
+.avatar {
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  margin: 0 0 0.5rem 0;
+  padding: 0.25rem;
+  border-radius: 5px;
+  transition: all 0.25s ease;
+  &:hover {
+    background-color: $primary-color-bold;
+  }
+  &--icon {
+    border-radius: 100px;
+    width: 25px;
+    height: 25px;
+    &:hover {
+      border-radius: 8px;
+    }
+  }
+  &--name {
+    margin-left: 0.5rem;
+  }
+}
 .shrinkbar {
   background-color: $primary-color;
   //background: rgb(25, 144, 255);
@@ -43,6 +67,8 @@ h4 {
   );
   */
   position: fixed;
+  display: flex;
+  flex-direction: column;
   text-transform: uppercase;
   font-size: 13px;
   height: 100%;
@@ -64,6 +90,31 @@ h4 {
     color: white;
     border-top: none;
     margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  &--search {
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.5rem 0;
+    padding: 0.25rem;
+    border-radius: 5px;
+    &-input {
+      input {
+        &::placeholder {
+          color: white;
+        }
+        color: white;
+        box-sizing: border-box;
+        width: 100%;
+        margin-left: 0.25rem;
+        border: none;
+        background-color: $primary-color-bold;
+        border-radius: 5px;
+        padding: 0.5rem;
+      }
+    }
   }
   &--item {
     cursor: pointer;
