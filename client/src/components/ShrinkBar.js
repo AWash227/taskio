@@ -31,7 +31,10 @@ export const ShrinkBar = ({ projects, shrinkbaritems, handleProjectClick }) => {
           key={shrinkbaritem.title}
           shrinkbaritem={shrinkbaritem}
           expanded={expanded}
-        />
+        >
+          <span className="shrinkbar--item-icon">{shrinkbaritem.icon}</span>
+          <span className="shrinkbar--item-text">{shrinkbaritem.title}</span>
+        </ShrinkBarItem>
       ))}
       <hr className="shrinkbar--rule" />
       {projects.map(project => (
