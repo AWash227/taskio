@@ -1,20 +1,11 @@
-class Project {
-  constructor(name, due, tasks) {
-    this.setName(name);
-    this.setDue(due);
-    this.setTasks(tasks);
-  }
-  // GETTERS SETTERS
-  getName = () => this.name;
-  setName = name => (this.name = name);
+import Axios from "axios";
 
-  getDue = () => this.due;
-  setDue = due => (this.due = due);
-
-  getTasks = () => this.tasks;
-  setTasks = tasks => (this.tasks = tasks);
-}
-
+const API = (() => {
+  const URL = path =>  `localhost:5000/api/${path}`
+  const createProject = (title, complete, img, duedate, tasks) => {
+    Axios.post("")
+  })
+})()
 const exProject = {
   name: "Holcomb",
   src:

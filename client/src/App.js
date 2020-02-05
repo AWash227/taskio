@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"
 import { IoIosHome, IoIosPlayCircle } from "react-icons/io";
 import "./App.scss";
 import ShrinkBar from "./components/ShrinkBar";
@@ -103,6 +104,7 @@ function App() {
       />
       <Pane project={project} setTask={setTask} />
       <Content task={task} setTask={setTask} />
+      <button onClick={() => axios}
     </div>
   );
 }
