@@ -1,11 +1,20 @@
 import Axios from "axios";
 
 const API = (() => {
-  const URL = path =>  `localhost:5000/api/${path}`
+  const URL = path => `localhost:5000/api/${path}`;
   const createProject = (title, complete, img, duedate, tasks) => {
-    Axios.post("")
-  })
-})()
+    Axios.post(URL("projects"), {
+      title: title,
+      complete: complete,
+      img: img,
+      duedate: duedate,
+      tasks: tasks
+    })
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+  };
+  return { createProject };
+})();
 const exProject = {
   name: "Holcomb",
   src:
@@ -43,3 +52,5 @@ const exProject = {
     { title: "Laundry", tags: ["Personal", "Cleanliness"] }
   ]
 };
+
+export default API;

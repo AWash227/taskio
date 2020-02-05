@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import API from "./API";
 import { IoIosHome, IoIosPlayCircle } from "react-icons/io";
 import "./App.scss";
 import ShrinkBar from "./components/ShrinkBar";
@@ -97,6 +98,12 @@ function App() {
   };
   return (
     <div className="App">
+      <button
+        style={{ marginLeft: "4rem" }}
+        onClick={() =>
+          API.createProject("A new Project", false, "", new Date(), [])
+        }
+      />
       <ShrinkBar
         projects={[exProject, ex2Project]}
         shrinkbaritems={shrinkItems}
@@ -104,7 +111,6 @@ function App() {
       />
       <Pane project={project} setTask={setTask} />
       <Content task={task} setTask={setTask} />
-      <button onClick={() => axios}
     </div>
   );
 }
