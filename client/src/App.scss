@@ -33,43 +33,18 @@ h4 {
   }
 }
 .avatar {
-  display: flex;
-  align-items: center;
-  color: white;
-  cursor: pointer;
-  margin: 0 0 0.5rem 0;
-  padding: 0.25rem;
-  border-radius: 5px;
-  transition: all 0.25s ease;
+  border-radius: 100px;
+  width: 25px;
+  height: 25px;
   &:hover {
-    background-color: $primary-color-bold;
-  }
-  &--icon {
-    border-radius: 100px;
-    width: 25px;
-    height: 25px;
-    &:hover {
-      border-radius: 8px;
-    }
-  }
-  &--name {
-    margin-left: 0.5rem;
+    border-radius: 8px;
   }
 }
 .shrinkbar {
   background-color: $primary-color;
-  //background: rgb(25, 144, 255);
-  /*
-  background: linear-gradient(
-    98deg,
-    rgba(25, 144, 255, 1) 0%,
-    rgba(22, 15, 171, 1) 100%
-  );
-  */
   position: fixed;
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
   font-size: 13px;
   height: 100%;
   z-index: 200;
@@ -77,13 +52,10 @@ h4 {
   padding: 1rem;
   transition: all 0.1s ease 0s;
   overflow: none;
-  word-wrap: none;
-  white-space: nowrap;
-  text-overflow: clip;
   &.expanded {
     width: 12rem;
-    text-align: center;
     box-shadow: 0px 0 50px rgba(0, 0, 0, 0.3);
+    text-align: left;
   }
 
   &--rule {
@@ -119,6 +91,7 @@ h4 {
   &--item {
     cursor: pointer;
     color: white;
+    font-size: 14px;
     display: flex;
     align-items: center;
     margin: 0 0 0.5rem 0;

@@ -14,14 +14,16 @@ export const Content = ({ task, setTask }) => {
         <Button>Add User</Button>
         <Button>Start Timer</Button>
       </div>
-      <div className="content-right">
-        <h3>{task.title}</h3>
-        {task.tags.map(tag => (
-          <Tag key={tag} tag={tag} />
-        ))}
-        <Description description={task.description} />
-        <TaskList tasks={task.tasks} setTask={setTask} />
-      </div>
+      {task ? (
+        <div className="content-right">
+          <h3>{task.title}</h3>
+          {task.tags ? task.tags.map(tag => <Tag key={tag} tag={tag} />) : null}
+          <Description description={task.description} />
+          <TaskList tasks={task.tasks} setTask={setTask} />
+        </div>
+      ) : (
+        <div className="content-right">Add a task</div>
+      )}
     </div>
   );
 };

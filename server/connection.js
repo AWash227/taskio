@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const URL = process.env.URL || "mongodb://localhost:27017";
+const URI = process.env.URI || "mongodb://localhost:27017";
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect(URL, {
+mongoose.connect(URI, {
   useNewUrlParser: true,
   useCreateIndex: true
 });

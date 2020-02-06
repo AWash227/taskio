@@ -31,21 +31,20 @@ export const ShrinkBar = ({ projects, shrinkbaritems, handleProjectClick }) => {
           key={shrinkbaritem.title}
           shrinkbaritem={shrinkbaritem}
           expanded={expanded}
-        >
-          <span className="shrinkbar--item-icon">{shrinkbaritem.icon}</span>
-          <span className="shrinkbar--item-text">{shrinkbaritem.title}</span>
-        </ShrinkBarItem>
+          callback={() => console.log(`Routing to: ${shrinkbaritem.link}`)}
+        ></ShrinkBarItem>
       ))}
       <hr className="shrinkbar--rule" />
       {projects.map(project => (
-        <Avatar
-          key={project.name}
-          onClick={() => {
-            handleProjectClick(project);
-          }}
-          name={project.name}
-          src={project.src}
+        <ShrinkBarItem
+          key={project._id || project.title}
           expanded={expanded}
+          shrinkbaritem={{
+            title: project.title,
+            icon: <Avatar src={project.src || project.img} />,
+            link: "/"
+          }}
+          callback={() => handleProjectClick(project)}
         />
       ))}
     </aside>
