@@ -1,36 +1,13 @@
 @import "./Theme.scss";
-body,
-html,
-#root,
-.App {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-textarea,
-input,
-button,
-select {
-  font-family: inherit;
-  font-size: inherit;
-}
-h3,
-h4 {
-  color: $secondary-text-color;
-}
 .App {
   display: flex;
   flex-direction: row;
 }
+.app-content {
+  margin-top: 3rem;
+}
 .pane {
-  margin-left: 4rem;
-  width: 35%;
-  padding: 2rem;
-  z-index: 0;
-  border-right: 1px solid $secondary-color;
-  &--actions {
-    display: flex;
-  }
+  width: 33%;
 }
 .avatar {
   border-radius: 100px;
@@ -108,9 +85,7 @@ h4 {
   }
 }
 .button {
-  background-color: $secondary-color;
   border: none;
-  color: $secondary-text-color;
   font-size: 14px;
   width: 100%;
   border-radius: 5px;

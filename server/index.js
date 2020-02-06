@@ -1,4 +1,6 @@
 const express = require("express");
+require("./models/Task");
+require("./models/Project");
 require("./connection");
 const cors = require("cors");
 

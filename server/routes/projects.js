@@ -1,9 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-require("../models/project");
-const Project = mongoose.model("Project");
-
+const Project = require("../models/Project");
+require("../models/Task");
 // CREATE
 router.route("/").post(function(req, res) {
   const project = req.body;
@@ -13,7 +12,7 @@ router.route("/").post(function(req, res) {
     complete: project.complete,
     img: project.img,
     duedate: project.duedate,
-    tasks: project.tasks
+    subTasks: project.tasks
   });
   newProject
     .save()
@@ -30,8 +29,12 @@ router.route("/").get(function(req, res) {
 router.route("/:id").get((req, res) => {
   Project.findById(req.params.id)
     .populate("tasks")
-    .then(project => res.json(project))
-    .catch(err => res.status(400).json("Error: " + err));
+    .exec((err, project) => {
+      if (err) {
+        res.status(400).json("Error: " + err);
+      }
+      res.json(project);
+    });
 });
 
 // UPDATE
@@ -50,12 +53,13 @@ router.route("/:id").delete((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route("/add-task/:id").patch((req, res) => {
-  Project.findById(req.params.id).then(project => {
-    let newTasks = project.tasks;
-    newTasks.push(mongoose.Types.ObjectId(req.body.id));
-    projects.tasks = newTasks;
-  });
+router.route("/add-task/").patch((req, res) => {
+  Project.findById(req.body.projectId)
+    .then(project => {
+      project.tasks.push(mongoose.Types.ObjectId(req.body.taskId));
+      project.save(proj => res.json(proj));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;

@@ -1,16 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-require("../models/task");
 const Task = mongoose.model("Task");
 
 // CREATE
 router.route("/").post(function(req, res) {
   const task = req.body;
 
-  const newTask = new Task({ task });
+  const newTask = new Task({
+    title: task.title,
+    complete: task.complete,
+    description: task.description,
+    tags: task.tags,
+    subTasks: task.tasks
+  });
 
-  newProject
+  newTask
     .save()
     .then(() => res.json("Task added!"))
     .catch(err => res.status(400).json("Error: " + err));
@@ -21,7 +26,11 @@ router.route("/").get(function(req, res) {
   Task.find()
     .then(tasks => res.json(tasks))
     .catch(err => res.status(400).json("Error: " + err));
-  res.send("respond with a resource");
+});
+router.route("/:id").get(function(req, res) {
+  Task.findOne({ _id: req.params.id })
+    .then(task => res.json(task))
+    .catch(err => res.status(400).json("Error: " + err));
 });
 
 // UPDATE
