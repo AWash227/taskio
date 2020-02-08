@@ -1,14 +1,11 @@
 const express = require("express");
-require("./models/Task");
-require("./models/Project");
 require("./connection");
 const cors = require("cors");
 
+const projectsRouter = require("./routes/projects");
+const tasksRouter = require("./routes/tasks");
 const app = express();
 const port = process.env.PORT || 5000;
-
-const tasksRouter = require("./routes/tasks");
-const projectsRouter = require("./routes/projects");
 
 app.use(cors());
 app.use(express.json());

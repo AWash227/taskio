@@ -40,6 +40,12 @@ const API = (() => {
         .then(res => callback(res.data))
         .catch(err => console.error(err));
     };
+    const list = callback => {
+      axios
+        .get(URL("projects/list"))
+        .then(res => callback(res.data))
+        .catch(err => console.error(err));
+    };
     // DELETE a project
     const remove = id => {
       axios
@@ -47,7 +53,7 @@ const API = (() => {
         .then(res => console.log(res.data))
         .catch(err => console.error(err));
     };
-    return { add, get, getById, remove, addTask };
+    return { add, get, getById, list, remove, addTask };
   })();
 
   const task = (() => {

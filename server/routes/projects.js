@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
+const Task = require("../models/Task");
 const Project = require("../models/Project");
-require("../models/Task");
 // CREATE
 router.route("/").post(function(req, res) {
   const project = req.body;
@@ -21,22 +21,35 @@ router.route("/").post(function(req, res) {
 });
 
 // READ
-router.route("/").get(function(req, res) {
-  Project.find()
+router.route("/list").get(function(req, res) {
+  Project.find({}, { title: true, img: true })
     .then(projects => res.json(projects))
-    .catch(err => res.status(400).json("Error: " + err));
+    .catch(err => {
+      res.status(400).json("Error" + err);
+    });
 });
 router.route("/:id").get((req, res) => {
   Project.findById(req.params.id)
     .populate("tasks")
+    .then(proj => {
+      res.json(proj);
+    })
+    .catch(err => res.status(400).json(err));
+  /*
     .exec((err, project) => {
       if (err) {
         res.status(400).json("Error: " + err);
       }
       res.json(project);
     });
+    */
 });
 
+router.route("/").get(function(req, res) {
+  Project.find()
+    .then(projects => res.json(projects))
+    .catch(err => res.status(400).json("Error: " + err));
+});
 // UPDATE
 router.route("/:id").put((req, res) => {
   Project.findByIdAndUpdate(req.params.id, req.body).then(() =>
@@ -53,11 +66,18 @@ router.route("/:id").delete((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route("/add-task/").patch((req, res) => {
+router.route("/addTask/").patch((req, res) => {
   Project.findById(req.body.projectId)
     .then(project => {
-      project.tasks.push(mongoose.Types.ObjectId(req.body.taskId));
-      project.save(proj => res.json(proj));
+      project.updateOne(
+        { $push: { tasks: mongoose.Types.ObjectId(req.body.taskId) } },
+        (err, updated) => {
+          if (err) {
+            res.status(400).json("Error adding task");
+          }
+          res.json("Task added to: " + updated);
+        }
+      );
     })
     .catch(err => res.status(400).json("Error: " + err));
 });

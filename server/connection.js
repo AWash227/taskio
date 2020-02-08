@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const URI = process.env.URI || "mongodb://localhost:27017";
+const URI = process.env.URI || "mongodb://localhost:27017/Taskio";
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);

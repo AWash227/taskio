@@ -1,10 +1,18 @@
 @import "./Theme.scss";
+@import "./Break.scss";
 .App {
-  display: flex;
-  flex-direction: row;
 }
 .app-content {
-  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  @include lg {
+    margin-top: 3rem;
+    margin-bottom: 0;
+  }
+  @include sm {
+    margin-bottom: 3rem;
+  }
 }
 .pane {
   width: 33%;
@@ -82,18 +90,6 @@
       text-align: center;
       transition: opacity 0.1s ease;
     }
-  }
-}
-.button {
-  border: none;
-  font-size: 14px;
-  width: 100%;
-  border-radius: 5px;
-  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-  margin: 0.25rem;
-  transition: background-color 0.1s ease-in-out;
-  &:hover {
-    background-color: $secondary-color-bold;
   }
 }
 

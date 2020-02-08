@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const Task = mongoose.model("Task");
+const Task = require("../models/Task");
 
 // CREATE
 router.route("/").post(function(req, res) {
