@@ -5,19 +5,17 @@ const Task = require("../models/Task");
 
 // CREATE
 router.route("/").post(function(req, res) {
-  const task = req.body;
-
   const newTask = new Task({
-    title: task.title,
-    complete: task.complete,
-    description: task.description,
-    tags: task.tags,
-    subTasks: task.tasks
+    title: req.body.title,
+    complete: req.body.complete,
+    description: req.body.description,
+    tags: req.body.tags,
+    subTasks: req.body.tasks
   });
 
   newTask
     .save()
-    .then(() => res.json("Task added!"))
+    .then(task => res.json("Task " + task._id + " added!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
 

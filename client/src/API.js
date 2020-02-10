@@ -18,11 +18,11 @@ const API = (() => {
     };
 
     // ADD a task to the project
-    const addTask = (projectId, taskId, callback) => {
+    const addTask = (projectId, task, callback) => {
       axios
-        .patch(URL(`projects/add-task/`), {
-          projectId: projectId,
-          taskId: taskId
+        .post(URL(`projects/addTask`), {
+          task: task,
+          projectId: projectId
         })
         .then(res => callback(res.data))
         .catch(err => console.error(err));

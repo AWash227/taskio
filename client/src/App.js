@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { SERVER_URL } from "./Constants";
 import Data from "./Data";
-import Split from "react-split";
 import "./App.scss";
-import ShrinkBar from "./components/ShrinkBar";
 import Project from "./components/Project/Project";
 import Content from "./components/Content";
-import API from "./API";
 import axios from "axios";
 import Topbar from "./components/Topbar/Topbar";
 import Pane from "./components/Pane/Pane";
@@ -17,23 +14,31 @@ function App() {
   const [projects, setProjects] = useState([Data.exProject, Data.ex2Project]);
   const handleProjectClick = project => {
     axios.get(`${SERVER_URL}/projects/${project._id}`).then(res => {
-      setProject(res);
-      if (res.tasks) {
-        setTask(res.tasks[0]);
+      setProject(res.data);
+      if (res.data.tasks) {
+        setTask(res.data.tasks[0]);
       }
     });
   };
+  const addProject = () => {
+    axios
+      .post(`${SERVER_URL}/projects`, {
+        title: "New Project!",
+        complete: "Complete",
+        img:
+          "https://i.pinimg.com/564x/12/07/29/120729bc39ecd62b1ce0115374f55393.jpg",
+        duedate: new Date(),
+        tasks: []
+      })
+      .then(newProject => console.log(newProject))
+      .catch(err => console.error(err));
+  };
+
   useEffect(() => {
     axios
-      .get(`${SERVER_URL}/projects/list`)
+      .get(`${SERVER_URL}/projects`)
       .then(res => {
-        setProjects(res);
-      })
-      .catch(err => console.error(err));
-    axios
-      .get(`${SERVER_URL}/tasks/`)
-      .then(res => {
-        console.log(`TASKS: ${res}`);
+        setProjects(res.data);
       })
       .catch(err => console.error(err));
   }, []);
@@ -48,7 +53,11 @@ function App() {
           onSearch={search => console.log(`Searching for: ${search}`)}
           onSettings={() => console.log("Settings clicked!")}
         />
-        <Pane projects={projects} onProjectClick={handleProjectClick} />
+        <Pane
+          projects={projects}
+          onProjectClick={handleProjectClick}
+          onNewProjectClick={addProject}
+        />
         <Project project={project} setTask={setTask} setProject={setProject} />
         <Content task={task} setTask={setTask} />
       </div>
