@@ -3,7 +3,7 @@ import { SERVER_URL } from "./Constants";
 import Data from "./Data";
 import "./App.scss";
 import Project from "./components/Project/Project";
-import Content from "./components/Content";
+import Content from "./components/Content/Content";
 import axios from "axios";
 import Topbar from "./components/Topbar/Topbar";
 import Pane from "./components/Pane/Pane";
