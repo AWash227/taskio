@@ -1,0 +1,68 @@
+@import "../../Theme.scss";
+.shrinkbar {
+  background-color: $primary-color;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  height: 100%;
+  z-index: 200;
+  width: 2rem;
+  padding: 1rem;
+  transition: all 0.1s ease 0s;
+  overflow: none;
+  &.expanded {
+    width: 12rem;
+    box-shadow: 0px 0 50px rgba(0, 0, 0, 0.3);
+    text-align: left;
+  }
+
+  &--rule {
+    color: white;
+    border-top: none;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  &--search {
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.5rem 0;
+    padding: 0.25rem;
+    border-radius: 5px;
+    &-input {
+      input {
+        &::placeholder {
+          color: white;
+        }
+        color: white;
+        box-sizing: border-box;
+        width: 100%;
+        margin-left: 0.25rem;
+        border: none;
+        background-color: $primary-color-bold;
+        border-radius: 5px;
+        padding: 0.5rem;
+      }
+    }
+  }
+  &--item {
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.5rem 0;
+    padding: 0.25rem;
+    border-radius: 5px;
+    &:hover {
+      background-color: $primary-color-bold;
+    }
+    &-title {
+      margin-left: 0.5rem;
+      text-align: center;
+      transition: opacity 0.1s ease;
+    }
+  }
+}

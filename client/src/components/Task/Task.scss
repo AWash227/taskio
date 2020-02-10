@@ -1,0 +1,14 @@
+@import "../../Theme.scss";
+.taskitem {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $secondary-text-color;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 0 0 0.25rem 0;
+  cursor: pointer;
+  &:hover {
+    background-color: $secondary-color;
+  }
+}

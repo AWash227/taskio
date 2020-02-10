@@ -1,0 +1,15 @@
+@import "../../Theme.scss";
+.task-description {
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 0.85rem;
+  &.empty {
+    background-color: $secondary-color;
+    color: $secondary-text-color;
+    display: block;
+    border: none;
+    margin-top: 1rem;
+    width: 100%;
+    resize: vertical;
+  }
+}

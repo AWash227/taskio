@@ -1,0 +1,16 @@
+@import "../../Theme.scss";
+.content {
+  width: 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &-left {
+    flex: 1 0;
+    margin: 1rem;
+  }
+  &-right {
+    flex: 4 0;
+    margin: 1rem;
+  }
+}

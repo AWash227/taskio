@@ -1,0 +1,45 @@
+@import "../../Theme.scss";
+.pane {
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-right: 2px solid #eeeeee;
+  height: 100%;
+  hr {
+    border-top: none;
+    color: #eeeeee;
+    border-bottom: 2px solid;
+  }
+  &--title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    color: rgb(168, 168, 168);
+    letter-spacing: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &--item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: #f0f0f0;
+    }
+    &-icon {
+      margin-right: 0.5rem;
+    }
+  }
+}
