@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
-import TaskItem from "../Task/Task";
+import TaskItem from "../Task";
 import moment from "moment";
-import List from "../List/List";
-import Button from "../Button/Button";
+import List from "../List";
+import Button from "../Button";
 import API from "../../API";
 import "./Project.scss";
 

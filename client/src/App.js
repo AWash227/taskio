@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { SERVER_URL } from "./Constants";
 import Data from "./Data";
 import "./App.scss";
-import Project from "./components/Project/Project";
-import Content from "./components/Content/Content";
+import Project from "./components/Project";
+import Content from "./components/Content";
 import axios from "axios";
-import Topbar from "./components/Topbar/Topbar";
-import Pane from "./components/Pane/Pane";
+import { Topbar } from "./components";
+import Pane from "./components/Pane";
 
 function App() {
   const [project, setProject] = useState(Data.exProject);

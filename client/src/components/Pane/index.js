@@ -8,9 +8,9 @@ import {
 import "../../index.scss";
 import "./Pane.scss";
 import PaneItem from "./PaneItem";
-import Avatar from "../Avatar/Avatar";
+import Avatar from "../Avatar";
 import API from "../../API";
-import Button from "../Button/Button";
+import Button from "../Button";
 
 export const Pane = ({ projects, onProjectClick, onNewProjectClick }) => {
   return (

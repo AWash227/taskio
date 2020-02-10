@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "../Button/Button";
-import Tag from "../Tag/Tag";
-import Description from "../Description/Description";
+import Button from "../Button";
+import Tag from "../Tag";
+import Description from "../Description";
 import "./Content.scss";
-import List from "../List/List";
-import TaskItem from "../Task/Task";
+import List from "../List";
+import TaskItem from "../Task";
 
 export const Content = ({ task, setTask }) => {
   return (

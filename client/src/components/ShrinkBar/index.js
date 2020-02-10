@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ShrinkBarItem from "./ShrinkBarItem";
 import { IoIosTrendingUp } from "react-icons/io";
 import ShrinkBarSearch from "./ShrinkBarSearch";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 import "./ShrinkBar.scss";
 
 // Takes in a menu item with data that look like
