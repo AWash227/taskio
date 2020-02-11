@@ -21,6 +21,7 @@ const EmptyDesc = ({
       ref={text}
       placeholder="Add a description..."
       className="task-description empty"
+      rows={2}
       defaultValue={tempDesc}
       onChange={e => setTempDesc(e.target.value)}
       onKeyDown={e => {

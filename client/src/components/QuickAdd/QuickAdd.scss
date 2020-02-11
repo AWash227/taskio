@@ -1,0 +1,34 @@
+@import "../../Theme.scss";
+@import "../../index.scss";
+
+.quick-add {
+  max-width: 25rem;
+  padding: 1rem;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  .inputs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  &--complete {
+    margin-right: 1rem;
+  }
+  &--title {
+    border: none;
+    font-size: 16;
+  }
+  &--tags {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 0;
+    svg {
+      font-size: 15px;
+    }
+  }
+  .task-description {
+    box-sizing: border-box;
+  }
+}

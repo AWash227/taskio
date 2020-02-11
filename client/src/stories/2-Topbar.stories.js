@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import Topbar from "../components/Topbar/Topbar";
+import Topbar from "../components/Topbar";
 
 export default {
   title: "Topbar",
