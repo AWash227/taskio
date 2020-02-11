@@ -5,7 +5,7 @@ import Button from "../Button";
 import { IoIosAdd } from "react-icons/io";
 import Description from "../Description";
 
-const QuickAdd = () => {
+const QuickAdd = onSubmit => {
   const [title, setTitle] = useState("");
   const [checked, setChecked] = useState(false);
   const [tags, setTags] = useState([]);

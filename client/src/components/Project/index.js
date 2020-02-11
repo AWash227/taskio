@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
-import TaskItem from "../Task";
+import Section from "../Section";
 import moment from "moment";
 import List from "../List";
 import Button from "../Button";
@@ -25,7 +25,7 @@ export const Project = ({ project, setTask }) => {
   return (
     <div className="project">
       <div style={{ display: "flex", alignItems: "center" }}>
-        <h3>{currProj.name || currProj.title}</h3>
+        <h3>{currProj.title || "Select a Project!"}</h3>
         <span
           style={{ marginLeft: "auto" }}
           onClick={() => API.project.remove(currProj._id)}
@@ -35,6 +35,27 @@ export const Project = ({ project, setTask }) => {
       </div>
       <h4>{moment(currProj.due).format("MMM DD, YYYY")}</h4>
       <div className="project--actions">
+        <Button
+          style={{ width: "33%" }}
+          onClick={() => {
+            API.project.addTask(
+              currProj._id,
+              {
+                title: "Updated Hello",
+                complete: false,
+                description: "",
+                tags: [],
+                tasks: []
+              },
+              "__default",
+              task => {
+                console.log(task);
+              }
+            );
+          }}
+        >
+          Add Task
+        </Button>
         <Button
           style={{ width: "33%" }}
           onClick={() => {
@@ -53,17 +74,17 @@ export const Project = ({ project, setTask }) => {
             );
           }}
         >
-          Add Task
+          Add Section
         </Button>
       </div>
       <br />
-      {currProj.tasks ? (
+      {currProj.sections ? (
         <List>
-          {currProj.tasks.map(task => (
-            <TaskItem
-              key={task._id || task.title}
-              task={task}
-              onClick={() => setTask(task)}
+          {currProj.sections.map(section => (
+            <Section
+              projectTitle={project.title}
+              section={section}
+              setTask={setTask}
             />
           ))}
         </List>

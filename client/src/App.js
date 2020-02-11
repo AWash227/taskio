@@ -9,9 +9,9 @@ import { Topbar } from "./components";
 import Pane from "./components/Pane";
 
 function App() {
-  const [project, setProject] = useState(Data.exProject);
+  const [project, setProject] = useState({});
   const [task, setTask] = useState({});
-  const [projects, setProjects] = useState([Data.exProject, Data.ex2Project]);
+  const [projects, setProjects] = useState([]);
   const handleProjectClick = project => {
     axios.get(`${SERVER_URL}/projects/${project._id}`).then(res => {
       setProject(res.data);

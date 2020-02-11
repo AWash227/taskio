@@ -1,0 +1,23 @@
+@import "../../Theme.scss";
+
+.section {
+  width: 100%;
+  &--bar {
+    display: flex;
+    background-color: $secondary-color;
+    font-size: 0.8rem;
+    color: $secondary-text-color;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.15s all ease;
+    &:hover {
+      background-color: $secondary-color-bold;
+    }
+  }
+  &--tasks {
+    margin-left: 0.5rem;
+  }
+}

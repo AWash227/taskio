@@ -18,10 +18,11 @@ const API = (() => {
     };
 
     // ADD a task to the project
-    const addTask = (projectId, task, callback) => {
+    const addTask = (projectId, task, section, callback) => {
       axios
         .post(URL(`projects/addTask`), {
           task: task,
+          section: section,
           projectId: projectId
         })
         .then(res => callback(res.data))

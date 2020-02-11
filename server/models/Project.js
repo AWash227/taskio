@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const SectionSchema = new mongoose.Schema({
+  title: String,
+  tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }]
+});
+
 const Schema = new mongoose.Schema(
   {
     title: {
@@ -20,7 +25,16 @@ const Schema = new mongoose.Schema(
       type: Date,
       required: false
     },
-    tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }]
+    sections: [
+      {
+        type: SectionSchema,
+        default: [
+          { title: "__default", tasks: [] },
+          { title: "__completed", tasks: [] },
+          { title: "__archived", tasks: [] }
+        ]
+      }
+    ]
   },
   {
     timestamps: true

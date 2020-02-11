@@ -27,12 +27,15 @@ router.route("/list").get(function(req, res) {
     });
 });
 router.route("/:id").get((req, res) => {
+  // Get the project
   Project.findById(req.params.id)
-    .populate("tasks", "title complete tags")
-    .then(proj => {
-      res.json(proj);
-    })
-    .catch(err => res.status(400).json(err));
+    .populate({ path: "sections.tasks" })
+    .exec((err, populated) => {
+      if (err) {
+        res.status(400).json(err);
+      }
+      res.json(populated);
+    });
   /*
     .exec((err, project) => {
       if (err) {
@@ -77,8 +80,15 @@ router.route("/addTask").post((req, res) => {
     .save()
     .then(task => {
       Project.updateOne(
-        { _id: req.body.projectId },
-        { $push: { tasks: mongoose.Types.ObjectId(task._id) } }
+        {
+          _id: req.body.projectId,
+          sections: { $elemMatch: { title: req.body.section } }
+        },
+        {
+          $push: {
+            "sections.$.tasks": mongoose.Types.ObjectId(req.body.task._id)
+          }
+        }
       )
         .then(updatedProj => res.json(updatedProj))
         .catch(err => res.status(400).json("Error adding task: " + err));

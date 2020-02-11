@@ -6,6 +6,7 @@
   border-radius: 5px;
   padding: 0.5rem 0.75rem 0.5rem 0.75rem;
   margin: 0.25rem;
+  background-color: $secondary-color;
   transition: background-color 0.1s ease-in-out;
   &:hover {
     background-color: $secondary-color-bold;
