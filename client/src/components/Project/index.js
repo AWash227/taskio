@@ -6,9 +6,32 @@ import List from "../List";
 import Button from "../Button";
 import API from "../../API";
 import "./Project.scss";
+import ActionButton from "./ActionButton";
 
 export const Project = ({ project, setTask }) => {
   const [currProj, setCurrProj] = useState(project);
+  const addTask = currProj => {
+    API.project.addTask(
+      currProj._id,
+      {
+        title: "New boi to test",
+        complete: false,
+        description: "",
+        tags: [],
+        tasks: []
+      },
+      "__default",
+      task => {
+        console.log(task);
+      }
+    );
+  };
+
+  const addSection = (currProj, section) => {
+    API.project.addSection(currProj._id, section, section =>
+      console.log(section)
+    );
+  };
   useEffect(() => {
     // If the project loaded in pane is fetched from database
     if (project._id) {
@@ -35,47 +58,16 @@ export const Project = ({ project, setTask }) => {
       </div>
       <h4>{moment(currProj.due).format("MMM DD, YYYY")}</h4>
       <div className="project--actions">
-        <Button
-          style={{ width: "33%" }}
-          onClick={() => {
-            API.project.addTask(
-              currProj._id,
-              {
-                title: "Updated Hello",
-                complete: false,
-                description: "",
-                tags: [],
-                tasks: []
-              },
-              "__default",
-              task => {
-                console.log(task);
-              }
-            );
-          }}
-        >
-          Add Task
-        </Button>
-        <Button
-          style={{ width: "33%" }}
-          onClick={() => {
-            API.project.addTask(
-              currProj._id,
-              {
-                title: "Hello",
-                complete: false,
-                description: "",
-                tags: [],
-                tasks: []
-              },
-              task => {
-                console.log(task);
-              }
-            );
-          }}
-        >
-          Add Section
-        </Button>
+        <ActionButton title="Add Task" onClick={() => addTask(currProj)} />
+        <ActionButton
+          title="Add Section"
+          onClick={() =>
+            addSection(currProj, {
+              title: "New section name to test",
+              tasks: []
+            })
+          }
+        />
       </div>
       <br />
       {currProj.sections ? (

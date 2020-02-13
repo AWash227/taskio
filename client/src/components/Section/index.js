@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import "./Section.scss";
 import TaskItem from "../Task";
-import { IoIosArrowDown, IoIosArrowUp, IoIosAddCircle } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosArrowUp,
+  IoIosAddCircle,
+  IoIosTrash,
+  IoIosRemove,
+  IoIosRemoveCircle,
+  IoIosClose
+} from "react-icons/io";
 import Button from "../Button";
+import Action from "./Action";
 
 const Section = ({ projectTitle, section, setTask }) => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(section.tasks > 0 ? true : false);
   return (
     <div className="section">
       <div className="section--bar" onClick={() => setExpanded(!expanded)}>
@@ -16,7 +25,10 @@ const Section = ({ projectTitle, section, setTask }) => {
           : section.title === "__archived"
           ? "Archived"
           : section.title}
-        {expanded ? <IoIosArrowDown /> : <IoIosArrowUp />}
+        <span>
+          <span className="pill">{section.tasks.length}</span>
+          {expanded ? <IoIosArrowDown /> : <IoIosArrowUp />}
+        </span>
       </div>
       <div className="section--tasks">
         {section.tasks && expanded

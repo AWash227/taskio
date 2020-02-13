@@ -20,10 +20,19 @@ const API = (() => {
     // ADD a task to the project
     const addTask = (projectId, task, section, callback) => {
       axios
-        .post(URL(`projects/addTask`), {
-          task: task,
-          section: section,
-          projectId: projectId
+        .patch(URL(`projects/addTask`), {
+          projectId,
+          task,
+          section
+        })
+        .then(res => callback(res.data))
+        .catch(err => console.error(err));
+    };
+    const addSection = (projectId, section, callback) => {
+      axios
+        .patch(URL(`projects/addSection`), {
+          projectId,
+          section
         })
         .then(res => callback(res.data))
         .catch(err => console.error(err));
@@ -54,7 +63,7 @@ const API = (() => {
         .then(res => console.log(res.data))
         .catch(err => console.error(err));
     };
-    return { add, get, getById, list, remove, addTask };
+    return { add, get, getById, list, remove, addTask, addSection };
   })();
 
   const task = (() => {

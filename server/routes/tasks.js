@@ -10,7 +10,7 @@ router.route("/").post(function(req, res) {
     complete: req.body.complete,
     description: req.body.description,
     tags: req.body.tags,
-    subTasks: req.body.tasks
+    tasks: req.body.tasks
   });
 
   newTask
