@@ -12,7 +12,7 @@ mongoose.connect(URI, {
 const db = mongoose.connection;
 
 db.on("error", () => {
-  console.error("Error occurred in DB connection.");
+  console.error("Error: occurred in DB connection.");
 });
 
 db.on("open", () => {
